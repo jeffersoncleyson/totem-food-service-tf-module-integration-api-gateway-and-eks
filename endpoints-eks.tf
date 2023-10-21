@@ -37,4 +37,11 @@ resource "aws_apigatewayv2_route" "confirm_users" {
   route_key          = "PUT /v1/totem/customer/{customerId}/code/{code}"
   target             = "integrations/${aws_apigatewayv2_integration.eks_integration.id}"
 }
+
+resource "aws_apigatewayv2_route" "callback_payments" {
+  api_id = var.aws_apigatewayv2_api_restrict_api_id
+
+  route_key          = "POST /v1/totem/payment/callback"
+  target             = "integrations/${aws_apigatewayv2_integration.eks_integration.id}"
+}
 //====================================
