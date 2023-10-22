@@ -17,4 +17,10 @@ terraform {
       version = "~> 2.2.0"
     }
   }
+
+  backend "s3" {
+    bucket  = "totem-food-service-terraform-state"
+    key     = "totem-food-service-integration"
+    region  = "us-east-1"
+  }
 }
