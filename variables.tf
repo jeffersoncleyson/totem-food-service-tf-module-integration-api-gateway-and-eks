@@ -31,8 +31,18 @@ variable "eks_private_subnet_ids" {
   type        = list(string)
 }
 
-variable "eks_private_load_balancer_arn" {
-  description = "EKS Private Load Balancer integrating with service"
+variable "eks_private_load_balancer_arn_customer" {
+  description = "EKS Private Load Balancer integrating with service customer"
+  type        = string
+}
+
+variable "eks_private_load_balancer_arn_payment" {
+  description = "EKS Private Load Balancer integrating with service payment"
+  type        = string
+}
+
+variable "eks_private_load_balancer_arn_order" {
+  description = "EKS Private Load Balancer integrating with service order"
   type        = string
 }
 
