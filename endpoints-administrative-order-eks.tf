@@ -18,10 +18,18 @@ resource "aws_apigatewayv2_integration" "eks_integration_administrative_order" {
 resource "aws_apigatewayv2_route" "v1_administrative_order" {
   api_id = var.aws_apigatewayv2_api_restrict_api_id
 
-  route_key          = "ANY /v1/administrative/order/{proxy+}"
+  route_key          = "ANY /v1/administrative/orders"
   target             = "integrations/${aws_apigatewayv2_integration.eks_integration_administrative_order.id}"
   authorization_type = "CUSTOM"
   authorizer_id      = var.aws_apigatewayv2_authorizer_authorizer_id
 }
 
+resource "aws_apigatewayv2_route" "v1_administrative_order_params" {
+  api_id = var.aws_apigatewayv2_api_restrict_api_id
+
+  route_key          = "ANY /v1/administrative/orders/{proxy+}"
+  target             = "integrations/${aws_apigatewayv2_integration.eks_integration_administrative_order.id}"
+  authorization_type = "CUSTOM"
+  authorizer_id      = var.aws_apigatewayv2_authorizer_authorizer_id
+}
 //====================================
