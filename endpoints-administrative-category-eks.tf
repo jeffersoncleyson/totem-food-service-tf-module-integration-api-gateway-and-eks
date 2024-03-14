@@ -24,4 +24,13 @@ resource "aws_apigatewayv2_route" "v1_administrative_category" {
   authorizer_id      = var.aws_apigatewayv2_authorizer_authorizer_id
 }
 
+resource "aws_apigatewayv2_route" "v1_administrative_category_params" {
+  api_id = var.aws_apigatewayv2_api_restrict_api_id
+
+  route_key          = "ANY /v1/administrative/category/{proxy+}"
+  target             = "integrations/${aws_apigatewayv2_integration.eks_integration_administrative_category.id}"
+  authorization_type = "CUSTOM"
+  authorizer_id      = var.aws_apigatewayv2_authorizer_authorizer_id
+}
+
 //====================================
